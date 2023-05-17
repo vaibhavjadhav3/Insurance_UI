@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import DynamicForm from '../components/Form_template';
+import DynamicForm from './Form_template';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash,faEdit} from '@fortawesome/free-solid-svg-icons';

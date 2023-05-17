@@ -15,6 +15,11 @@ function AppUserHomePage() {
 
     return (
         <div >
+            <Banner>
+
+            </Banner>
+            <DefaultNavbar></DefaultNavbar>
+             
             <div id="main-wrapper" className="container">
                 <div className="row justify-content-center"></div>
 

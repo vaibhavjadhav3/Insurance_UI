@@ -1,11 +1,14 @@
 
 
-import React, { Component, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import axios from 'axios'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faTrash, faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import Banner from '../components/Banner';
+import Navbar from '../components/Navbar';
 
 
 
@@ -107,6 +110,10 @@ function HospitalPage() {
 
   return (
     <div className="row">
+      <Banner>
+
+      </Banner>
+      <Navbar></Navbar>
 
       <div className="col-md-4" style={{ paddingLeft: '100px', paddingTop: '50px' }}>
         <form onSubmit={handleAdd} >
