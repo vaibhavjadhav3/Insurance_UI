@@ -1,9 +1,14 @@
 
 import React from 'react'
+import Banner from '../components/Banner';
+import DefaultNavbar from '../components/DefaultNavbar';
 import "./Login.css"
 const Login = () => {
     return (
         <div>
+            <Banner>
+            </Banner>
+            <DefaultNavbar></DefaultNavbar>
             <div id="main-wrapper" className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-10">
@@ -29,6 +34,8 @@ const Login = () => {
                                                     <input type="password" className="form-control" id="exampleInputPassword1" />
                                                 </div>
                                                 <button type="submit" className="btn btn-theme">Login</button>
+                                                <a  href="/admin" style={{margin:"10px"}} className="btn btn-theme">Admin Login</a>
+                                                
                                                 <a href="#l" style={{ paddingLeft: "210px" }} className="forgot-link float-right text-primary">Forgot password?</a>
                                             </form>
                                             <p className="text-muted text-center mt-3 mb-0" style={{ paddingBottom: "10px" }}>Don't have an account? <a href="register.html" className="text-primary ml-1">register</a></p>

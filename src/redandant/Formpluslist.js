@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Form } from 'reactstrap';
 import MyForm from './Form';
-import HospitalPage from './HospitalList';
+import HospitalPage from '../pages/HospitalList';
 
 
 /*Combines two JS pages Form and Hospital List to check for possiblities of testing componenets independent
