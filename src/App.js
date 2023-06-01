@@ -1,40 +1,55 @@
 
-// import { Navbar } from 'reactstrap';
 
-import Banner from './components/Banner';
-// import NavbarTemp from './components/Navbar';
-import Navbar from './components/Navbar';
-// import Example from './components/Navbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Policy from './pages/Policy';
 
 import HospitalPage from './pages/HospitalList';
-import MyForm from './pages/Form';
-import Form_list from './pages/Formpluslist';
-import Acp from './pages/Announcements';
+import UserDash from "./UserPages/UserDash";
+
 
 import AnnouncementPage from './pages/AnnouncementList';
-import Home from './pages/Home';
-import AppUserHomePage from './AppUser';
-import Login from './UserPages/Login';
-import DefaultNavbar from './components/DefaultNavbar';
 
+import AppUserHomePage from './AppUserHomePage';
+import Login from './UserPages/Login';
+
+import AdminHome from './pages/AdminHome';
+import AdminLogin from "./UserPages/AdminLogin";
+import PrivateRoute from "./services/PrivateRoute";
+import AdminLogout from "./pages/AdminLogout";
 
 
 function App() {
+
+  const isLoggedIn=sessionStorage.getItem("token") ;
+  
+
   return (
     <div>
-        <Banner></Banner>
-        <DefaultNavbar></DefaultNavbar>
-     
+      
+        
      <BrowserRouter>
         <Routes>
           
          <Route path ="/" element={<AppUserHomePage/>} />
           {/* <Route path ="/announcements" element={<AnnouncementPage/>} />
           <Route path="/hospital" element={<HospitalPage/>}/>  */}
-          <Route path="/login" element={<Login/>}/>
+          <Route path ="/login" element={<Login/>} />
+          
+          <Route path ="/userdash" element={<UserDash/>}/>
+
+
+          <Route path ="/admin" element={isLoggedIn?<AdminHome/>: <Login/>} />
+          <Route path ="/adminlogin" element={isLoggedIn?<AdminLogin/>: <AdminLogin/>} />
+          <Route path ="/admin/policy" element={isLoggedIn? <Policy/> : <Login/>} />
+          <Route path ="/admin/announcements" element={isLoggedIn?<AnnouncementPage/>: <Login/>} />
+          <Route path="/admin/hospital" element={isLoggedIn?<HospitalPage/>: <Login/>}/>
+          <Route path="/admin/hospital" element={isLoggedIn?<HospitalPage/>: <Login/>}/>
+          <Route path="/admin/logout" element={isLoggedIn?<AdminLogout/>:<AdminLogin/>}/>
+
+          
+          
+          
         </Routes>
       
       </BrowserRouter>

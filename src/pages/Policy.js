@@ -1,11 +1,13 @@
 
 
-import React, { Component, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import axios from 'axios'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import Banner from '../components/Banner';
+import Navbar from '../components/Navbar';
 
 
 
@@ -18,12 +20,14 @@ function PolicyPage() {
   //'http://localhost:8080/hospital/getlist'
 
   useEffect(() => {
+    // console.log("in the get function")
     axios.get('http://localhost:8080/policy/getlist').then(response => {
+      // console.log(response)
       setData(response.data);
     }).catch(error => {
       console.error(error);
     });
-  }, [data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
+  },[data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
 
 
 
@@ -109,6 +113,8 @@ function PolicyPage() {
 
   return (
     <div className="row">
+      <Banner></Banner>
+      <Navbar></Navbar>
 
       <div className="col-md-4" style={{ paddingLeft: '100px', paddingTop: '50px' }}>
         <form onSubmit={handleAdd} >

@@ -1,11 +1,14 @@
 
 
-import React, { Component, useState, useEffect } from 'react';
+import React, {  useState, useEffect } from 'react';
 import axios from 'axios'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import Banner from '../components/Banner';
+import Navbar from '../components/Navbar';
+
 
 
 
@@ -20,11 +23,11 @@ function AnnouncementPage() {
     useEffect(() => {
         axios.get('http://localhost:8080/amt/getlist').then(response => {
             setData(response.data);
-            
+
         }).catch(error => {
             console.error(error);
         });
-    },[data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
+    }, [data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
 
 
 
@@ -95,7 +98,8 @@ function AnnouncementPage() {
         console.log("Save function called")
         const a = currentEdit.id
         axios.put(`http://localhost:8080/amt/edit/${a}`, currentEdit)
-            .then(response => {console.log(response)
+            .then(response => {
+                console.log(response)
                 // setData(response.data); console.log("Id edited")
 
             }).catch(error => {
@@ -107,6 +111,8 @@ function AnnouncementPage() {
 
     return (
         <div className="row">
+            <Banner></Banner>
+            <Navbar></Navbar>
 
             <div className="col-md-4" style={{ paddingLeft: '100px', paddingTop: '50px' }}>
                 <form onSubmit={handleAdd} >
@@ -144,7 +150,7 @@ function AnnouncementPage() {
                             </div>
                             <div className="form-group" style={{ paddingTop: '20px' }}>
                                 <label htmlFor="date">Date:</label>
-                                <input type='date' name="date" className="form-control" id="date"  value ={currentEdit.date} onChange={handleInputChangeforedit} />
+                                <input type='date' name="date" className="form-control" id="date" value={currentEdit.date} onChange={handleInputChangeforedit} />
                             </div>
 
                         </form>
@@ -183,7 +189,7 @@ function AnnouncementPage() {
                             <tr key={Announcement.id}>
                                 <td style={{ width: "250px" }}>{Announcement.title}</td>
                                 <td style={{ width: "200px" }}>{Announcement.description}</td>
-                                <td style={{ width: "200px" }}>{Announcement.date }</td>
+                                <td style={{ width: "200px" }}>{Announcement.date}</td>
                                 {/* <td ><Button color='danger' onClick={() => handleDelete(Announcement.id)}><FontAwesomeIcon icon={faTrash} /></Button></td>
                 <td><Button color='warning' onClick={() => handleEdit(Announcement.id)}><FontAwesomeIcon icon={faEdit} /></Button></td> */}
                                 <td><Button color='danger' onClick={() => handleDelete(Announcement.id)} style={{ width: "100px" }} >
