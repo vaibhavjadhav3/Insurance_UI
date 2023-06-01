@@ -3,12 +3,16 @@ import React, { useState } from 'react'
 import Banner from '../components/Banner';
 import DefaultNavbar from '../components/DefaultNavbar';
 import "./Login.css"
+import { useNavigate, RedirectFunction } from "react-router-dom";
 
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
-const Login = () => {
+
+import "./Login.css"
+const AdminLogin = () => {
 
 
+
+    // const history = useHistory()
     const [cred, setCred] = useState({
         username: '',
         password: ''
@@ -24,20 +28,25 @@ const Login = () => {
         console.log(cred)
       };
 
-      const navigate=useNavigate();
-
+      const navigate = useNavigate();
 
       const handleLogin = (event) => {
         console.log("this is creds in login handler"+cred)
         event.preventDefault();
-        axios.post('http://localhost:8080/api/auth/login', cred).then(response => {
+        axios.post('http://localhost:8080/api/auth/adminlogin', cred).then(response => {
           console.log("login cred submitted")
           console.log(response.data)
           if(response.status===200)
-          {
-            console.log("Login Succesful")
-            navigate("/userdash")
+          { 
+           
+            console.log("JWT token:"+response.data.accessToken)
+            // localStorage.setItem("token",response.data.accessToken)
+            sessionStorage.setItem("token",response.data.accessToken)
+            /*Directs to admin dashbboard */
 
+            console.log("Login Succesful")
+            // history.push('/admin')
+            navigate('/admin')
           }
           else{console.log("No success")}
           // handle successful submission
@@ -50,19 +59,11 @@ const Login = () => {
       };
 
 
-
-
-
-
-
-
-
-
     return (
         <div>
             <Banner>
             </Banner>
-            <DefaultNavbar></DefaultNavbar>
+            
             <div id="main-wrapper" className="container">
                 <div className="row justify-content-center">
                     <div className="col-xl-10">
@@ -72,7 +73,7 @@ const Login = () => {
                                     <div className="col-lg-6">
                                         <div className="p-5">
                                             <div className="mb-5">
-                                                <h3 className="h4 font-weight-bold text-theme">Login</h3>
+                                                <h3 className="h4 font-weight-bold text-theme" style={{WebkitTextFillColor:'red'}}>ADMIN LOGIN</h3>
                                             </div>
 
                                             <h6 className="h5 mb-0">Welcome back!</h6>
@@ -87,11 +88,17 @@ const Login = () => {
                                                     <label htmlFor="password">Password:</label>
                                                     <input type="password" className="form-control" id="password" name="password" onChange={handleInputChange}/>
                                                 </div>
+                                                {/* <button type="submit" className="btn btn-primary" style={{marginRight:'10px'}}>Submit</button>
+                                               <a href="#l" style={{ marginLeft:'10px' }} className="forgot-link float-right text-primary">Forgot password?</a>
+                                                <a href="/login" style={{marginleft:'50px'}} >User Login</a> */}
+
+
+
                                                 <button type="submit" className="btn btn-primary">Submit</button>
                                                 <a href="#l" style={{marginLeft:'40px'}} className="forgot-link float-right text-primary">Forgot password?</a>
-                                                <a  href="/adminlogin" style={{marginLeft:"40px"}} className="btn btn-warning">Admin Login</a>
-                                                
-                                                
+                                                <a  href="/login" style={{marginLeft:"60px"}} className="btn btn-warning">User Login</a>
+
+
                                             </form>
                                             <p className="text-muted text-center mt-3 mb-0" style={{ paddingBottom: "10px" }}>Don't have an account? <a href="register.html" className="text-primary ml-1">register</a></p>
                                         </div>
@@ -111,4 +118,4 @@ const Login = () => {
             </div>
             )
 }
-            export default Login;
+            export default AdminLogin;

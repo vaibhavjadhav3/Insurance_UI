@@ -13,6 +13,7 @@ const HomePageAnnouncement = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/amt/getlist').then(response => {
             setData(response.data);
+            // console.log("1")
             
         }).catch(error => {
             console.error(error);
@@ -20,14 +21,13 @@ const HomePageAnnouncement = () => {
     },[data]);
 
     return (
-        <div className='col-md-5' style={{ border: '2px solid blue', borderRadius: '5px',  }}>
+        <div  style={{ border: '1px solid blue', borderRadius: '5px', boxShadow: '1px 2px 9px ' }}>
         
-            <List >
-                <h3>Announcement List</h3>
-                
-                {data.map((amt) => (<li key={amt.id}>{amt.title}</li>))}
+            <div  style ={{textAlign:'center'}}>
+                <h3 >Announcement List</h3>
+               {data.map((amt) => (<li key={amt.id} style={{padding:'3px'}}>{amt.title}</li>))}
                
-            </List>
+            </div>
         </div>
     )
 }

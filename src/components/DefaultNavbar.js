@@ -7,7 +7,7 @@ const DefaultNavbar = () => {
       <NavItem>
         <NavLink href="/" style={{ color: 'black' }}>Home</NavLink>
       </NavItem>
-      <NavItem >
+      {/* <NavItem >
         <NavLink href="/policy" style={{ color: '#333' }}>Policy</NavLink>
       </NavItem>
       <NavItem>
@@ -16,7 +16,7 @@ const DefaultNavbar = () => {
       
       <NavItem>
         <NavLink href="/hospital" style={{ color: 'black' }}>Hospital List</NavLink>
-      </NavItem>
+      </NavItem> */}
       <NavItem>
         <NavLink href="/login" style={{ color: 'black' }}>Login</NavLink>
       </NavItem>

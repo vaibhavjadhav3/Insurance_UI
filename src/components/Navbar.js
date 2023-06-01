@@ -3,7 +3,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 
 const Navbar = () => {
   return (
-    <Nav tabs style={{ backgroundColor: '#f5f5f5', width: '100%', justifyContent: 'center', padding: '0.5rem 0'  }}>
+    <Nav tabs style={{ backgroundColor: '#f5f5f5', width: '100%', justifyContent: 'center', padding: '0.5rem 0',borderBlockColor :'black'}}>
       <NavItem>
         <NavLink href="/admin" style={{ color: 'black' }}>Home</NavLink>
       </NavItem>
@@ -17,8 +17,11 @@ const Navbar = () => {
         <NavLink href="#" style={{ color: 'black' }}>Users</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/admin/hospital" style={{ color: '' }}>Hospital List</NavLink>
+        <NavLink href="/admin/hospital" style={{ color: 'black' }}>Hospital List</NavLink>
       </NavItem>
+      <NavItem>
+        <NavLink href="/admin/logout"style={{ color: 'black' }}>Logout</NavLink>
+        </NavItem>
     </Nav>
   );
 }

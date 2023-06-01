@@ -22,16 +22,15 @@ const HomePageHospital = () => {
 
 
     return (
-        <div className='col-md-5' style={{ border: '2px solid blue', borderRadius: '5px' }}>
+        <div style={{ border: '1px solid blue', borderRadius: '5px', boxShadow: '1px 2px 9px ' }}>
 
 
-            <h3>Hospitals List</h3>
-
-
-            {data.map((hospital) => (<li key={hospital.id}>{hospital.hospitalName}</li>))}
-
-
-
+            <div>
+            <h3 style ={{textAlign:'center'}}>Hospitals List</h3>
+            {data.map((hospital) => 
+            (<li style ={{textAlign:'center',padding:'3px'}}  key={hospital.id}>{hospital.hospitalName}</li>))}
+            </div>
+           
 
 
 

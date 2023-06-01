@@ -20,12 +20,14 @@ function PolicyPage() {
   //'http://localhost:8080/hospital/getlist'
 
   useEffect(() => {
+    // console.log("in the get function")
     axios.get('http://localhost:8080/policy/getlist').then(response => {
+      // console.log(response)
       setData(response.data);
     }).catch(error => {
       console.error(error);
     });
-  }, [data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
+  },[data]);/*makes sure that the list is reloaded whenever there is chnage in data(i.e list retrived through API call ) */
 
 
 
